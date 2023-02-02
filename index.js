@@ -6,10 +6,12 @@ const selectionSort = (array) => {
     let indexOfLowestValue = i;
 
     for (let j = i; j < array.length; j++) {
+
       if (array[j] < lowestValue) {
         lowestValue = array[j];
         indexOfLowestValue = j;
       }
+      
     }
 
     let temp = array[i];
