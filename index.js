@@ -1,26 +1,30 @@
-/// Сортиовака выбором
-const selectionSort = (array) => {
-  for (let i = 0; i < array.length; i++) {
-    
-    let lowestValue = array[i];
-    let indexOfLowestValue = i;
+const findSmallest = (arr) => {
+  let smallest = arr[0];
+  let smallestIndex = 0;
 
-    for (let j = i; j < array.length; j++) {
-
-      if (array[j] < lowestValue) {
-        lowestValue = array[j];
-        indexOfLowestValue = j;
+  for (let i = 0; i < arr.length; i += 1) {
+      if (arr[i] < smallest) {
+          smallest = arr[i];
+          smallestIndex = i;
       }
-      
-    }
-
-    let temp = array[i];
-    
-    array[i] = array[indexOfLowestValue];
-    array[indexOfLowestValue] = temp;
   }
 
-  return array;
+  return smallestIndex;
+}
+
+
+/// Сортиовака выбором
+const selectionSort = (array) => {
+  let size = array.length;
+  let newArr = [];
+  
+  for (let i = 0; i < size; i += 1) {
+      let smallest = findSmallest(array);
+      newArr.push(array[smallest]);
+      array.splice(smallest, 1);
+  }
+
+  return newArr;
 };
 
 const test = [5, 3, 6, 2, 10];
